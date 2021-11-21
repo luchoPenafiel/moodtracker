@@ -1,14 +1,32 @@
 // Vendor
-import React from 'react';
+import React, { useState, useCallback, ReactElement } from 'react';
 import { View } from 'react-native';
 
-// Components
-import { MoodPickert } from '@moodtracker/components/MoodPickert.component';
+// Constants
+import { moodOptions } from '@moodtracker/constants/moods';
 
-export const Home: React.FC = () => {
+// Components
+import { MoodPicker } from '@moodtracker/components/MoodPickert.component';
+
+// Types
+import {
+  MoodOptionType,
+  MoodOptionWithTimestamp,
+} from '@moodtracker/types/types';
+
+export const Home = (): ReactElement => {
+  const [moodList, setMoodList] = useState<MoodOptionWithTimestamp[]>([]);
+
+  const handleSelectMood = useCallback((selectedMood: MoodOptionType) => {
+    setMoodList(current => [
+      ...current,
+      { mood: selectedMood, timestame: Date.now() },
+    ]);
+  }, []);
+
   return (
     <View>
-      <MoodPickert />
+      <MoodPicker onSelectMood={handleSelectMood} moodOptions={moodOptions} />
     </View>
   );
 };

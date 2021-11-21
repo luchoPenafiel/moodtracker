@@ -1,4 +1,4 @@
-import { MoodOptionType } from '@moodtracker/types/moodOptions';
+import { MoodOptionType } from '@moodtracker/types/types';
 
 export const moodOptions: MoodOptionType[] = [
   { emoji: '🧑‍💻', description: 'studious' },

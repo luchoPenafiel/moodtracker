@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { View, Text } from 'react-native';
 
-export const History: React.FC = () => {
+export const History = (): ReactElement => {
   return (
     <View>
       <Text>History</Text>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Home, History, Analytics } from '@moodtracker/screens';
 
 const BottomTabs = createBottomTabNavigator();
 
-export const BottomTabsNavigator: React.FC = () => {
+export const BottomTabsNavigator = (): ReactElement => {
   return (
     <BottomTabs.Navigator>
       <BottomTabs.Screen name="Home" component={Home} />

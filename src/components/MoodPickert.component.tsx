@@ -1,16 +1,30 @@
 // Vendor
-import React, { useState } from 'react';
+import React, { useState, useCallback, ReactElement } from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 
 // Constants
-import { moodOptions } from '@moodtracker/constants/moods';
 import { theme } from '@moodtracker/constants/theme';
 
 // Types
-import { MoodOptionType } from '@moodtracker/types/moodOptions';
+import { MoodOptionType } from '@moodtracker/types/types';
 
-export const MoodPickert: React.FC = () => {
+type MoodPickerProps = {
+  onSelectMood: (mood: MoodOptionType) => void;
+  moodOptions: MoodOptionType[];
+};
+
+export const MoodPicker = ({
+  onSelectMood,
+  moodOptions,
+}: MoodPickerProps): ReactElement => {
   const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
+
+  const handleSelectedMood = useCallback(() => {
+    if (selectedMood) {
+      onSelectMood(selectedMood);
+      setSelectedMood(undefined);
+    }
+  }, [selectedMood, onSelectMood]);
 
   return (
     <View style={styles.container}>
@@ -37,7 +51,7 @@ export const MoodPickert: React.FC = () => {
             );
           })}
         </View>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={handleSelectedMood}>
           <Text style={styles.buttonText}>Choose</Text>
         </Pressable>
       </View>
