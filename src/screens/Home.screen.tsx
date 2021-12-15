@@ -1,6 +1,7 @@
 // Vendor
 import React, { useState, useCallback, ReactElement } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
+import { format } from 'date-fns';
 
 // Constants
 import { moodOptions } from '@moodtracker/constants/moods';
@@ -20,13 +21,25 @@ export const Home = (): ReactElement => {
   const handleSelectMood = useCallback((selectedMood: MoodOptionType) => {
     setMoodList(current => [
       ...current,
-      { mood: selectedMood, timestame: Date.now() },
+      { mood: selectedMood, timestamp: Date.now() },
     ]);
+
+    console.log(moodList);
   }, []);
 
   return (
     <View>
       <MoodPicker onSelectMood={handleSelectMood} moodOptions={moodOptions} />
+      <View>
+        {moodList.map((item: any) => {
+          return (
+            <Text key={item.timestame}>
+              {item.mood.description}{' '}
+              {format(new Date(item.timestamp), "d MMM, yyyy 'at' hh:mm aa")}
+            </Text>
+          );
+        })}
+      </View>
     </View>
   );
 };
