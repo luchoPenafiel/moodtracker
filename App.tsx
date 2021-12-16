@@ -1,11 +1,19 @@
-import { BottomTabsNavigator } from '@moodtracker/components/BottomTabs.navigator';
-import { NavigationContainer } from '@react-navigation/native';
+// Vendor
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+
+//Components
+import { BottomTabsNavigator } from '@moodtracker/components/BottomTabs';
+
+// Contexts
+import { MoodContextProvider } from '@moodtracker/contexts/MoodContext';
 
 export const App: React.FC = () => {
   return (
-    <NavigationContainer>
-      <BottomTabsNavigator />
-    </NavigationContainer>
+    <MoodContextProvider>
+      <NavigationContainer>
+        <BottomTabsNavigator />
+      </NavigationContainer>
+    </MoodContextProvider>
   );
 };

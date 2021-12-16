@@ -1,45 +1,22 @@
 // Vendor
-import React, { useState, useCallback, ReactElement } from 'react';
-import { Text, View } from 'react-native';
-import { format } from 'date-fns';
+import React, { ReactElement } from 'react';
+import { View } from 'react-native';
 
 // Constants
 import { moodOptions } from '@moodtracker/constants/moods';
 
 // Components
-import { MoodPicker } from '@moodtracker/components/MoodPickert.component';
+import { MoodPicker } from '@moodtracker/components/MoodPickert';
 
-// Types
-import {
-  MoodOptionType,
-  MoodOptionWithTimestamp,
-} from '@moodtracker/types/types';
+// Contexts
+import { useMoodContext } from '@moodtracker/contexts/MoodContext';
 
 export const Home = (): ReactElement => {
-  const [moodList, setMoodList] = useState<MoodOptionWithTimestamp[]>([]);
-
-  const handleSelectMood = useCallback((selectedMood: MoodOptionType) => {
-    setMoodList(current => [
-      ...current,
-      { mood: selectedMood, timestamp: Date.now() },
-    ]);
-
-    console.log(moodList);
-  }, []);
+  const { handleSelectMood } = useMoodContext();
 
   return (
     <View>
       <MoodPicker onSelectMood={handleSelectMood} moodOptions={moodOptions} />
-      <View>
-        {moodList.map((item: any) => {
-          return (
-            <Text key={item.timestame}>
-              {item.mood.description}{' '}
-              {format(new Date(item.timestamp), "d MMM, yyyy 'at' hh:mm aa")}
-            </Text>
-          );
-        })}
-      </View>
     </View>
   );
 };

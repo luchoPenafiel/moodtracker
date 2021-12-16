@@ -13,10 +13,7 @@ type MoodPickerProps = {
   moodOptions: MoodOptionType[];
 };
 
-export const MoodPicker = ({
-  onSelectMood,
-  moodOptions,
-}: MoodPickerProps): ReactElement => {
+export const MoodPicker = ({ onSelectMood, moodOptions }: MoodPickerProps): ReactElement => {
   const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
 
   const handleSelectedMood = useCallback(() => {
@@ -36,17 +33,10 @@ export const MoodPicker = ({
               <View key={mood.emoji}>
                 <Pressable
                   onPress={() => setSelectedMood(mood)}
-                  style={[
-                    styles.moodItem,
-                    selectedMood?.emoji === mood.emoji
-                      ? styles.moodItemSelected
-                      : undefined,
-                  ]}>
+                  style={[styles.moodItem, selectedMood?.emoji === mood.emoji ? styles.moodItemSelected : undefined]}>
                   <Text>{mood.emoji}</Text>
                 </Pressable>
-                <Text style={styles.moodItemText}>
-                  {selectedMood?.emoji === mood.emoji && mood.description}
-                </Text>
+                <Text style={styles.moodItemText}>{selectedMood?.emoji === mood.emoji && mood.description}</Text>
               </View>
             );
           })}
@@ -62,7 +52,7 @@ export const MoodPicker = ({
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    // height: '100%',
+    height: '100%',
   },
   title: {
     marginBottom: 20,

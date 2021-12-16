@@ -1,5 +1,8 @@
+// Vendor
 import React, { ReactElement } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+// Screens
 import { Home, History, Analytics } from '@moodtracker/screens';
 
 const BottomTabs = createBottomTabNavigator();
