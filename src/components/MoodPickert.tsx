@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
+    paddingHorizontal: 10,
   },
   title: {
     marginBottom: 20,
@@ -84,9 +85,8 @@ const styles = StyleSheet.create({
   moodBox: {
     margin: 10,
     paddingVertical: 20,
-    borderWidth: 2,
-    borderColor: theme.color.purple,
     borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.8)',
   },
   moodList: {
     flexDirection: 'row',

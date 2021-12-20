@@ -1,6 +1,6 @@
 // Vendor
 import React, { ReactElement } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 // Context
 import { useMoodContext } from '@moodtracker/contexts/MoodContext';
@@ -12,10 +12,10 @@ export const History = (): ReactElement => {
   const { moodList } = useMoodContext();
 
   return (
-    <View>
+    <ScrollView>
       {moodList.map((item: any) => {
         return <MoodItemRow key={item.timestamp} item={item} />;
       })}
-    </View>
+    </ScrollView>
   );
 };
