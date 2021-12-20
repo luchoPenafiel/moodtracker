@@ -1,6 +1,6 @@
 // Vendor
 import React, { useState, useCallback, ReactElement } from 'react';
-import { Text, View, StyleSheet, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Image } from 'react-native';
 
 // Constants
 import { theme } from '@moodtracker/constants/theme';
@@ -13,15 +13,34 @@ type MoodPickerProps = {
   moodOptions: MoodOptionType[];
 };
 
+const imageSrc = require('@moodtracker/assets/img/butterflies.png');
+
 export const MoodPicker = ({ onSelectMood, moodOptions }: MoodPickerProps): ReactElement => {
   const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
+  const [hasSelected, setHastSelected] = useState(false);
 
   const handleSelectedMood = useCallback(() => {
     if (selectedMood) {
       onSelectMood(selectedMood);
       setSelectedMood(undefined);
+      setHastSelected(true);
     }
   }, [selectedMood, onSelectMood]);
+
+  const handleHasSelected = useCallback(() => {
+    setHastSelected(false);
+  }, []);
+
+  if (hasSelected) {
+    return (
+      <View style={styles.container}>
+        <Image source={imageSrc} />
+        <Pressable style={styles.button} onPress={handleHasSelected}>
+          <Text style={styles.buttonText}>Choose another</Text>
+        </Pressable>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -52,6 +71,7 @@ export const MoodPicker = ({ onSelectMood, moodOptions }: MoodPickerProps): Reac
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
+    alignItems: 'center',
     height: '100%',
   },
   title: {
