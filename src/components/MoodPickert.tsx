@@ -13,8 +13,6 @@ type MoodPickerProps = {
   moodOptions: MoodOptionType[];
 };
 
-const imageSrc = require('@moodtracker/assets/img/butterflies.png');
-
 export const MoodPicker = ({ onSelectMood, moodOptions }: MoodPickerProps): ReactElement => {
   const [selectedMood, setSelectedMood] = useState<MoodOptionType>();
   const [hasSelected, setHastSelected] = useState(false);
@@ -34,7 +32,7 @@ export const MoodPicker = ({ onSelectMood, moodOptions }: MoodPickerProps): Reac
   if (hasSelected) {
     return (
       <View style={styles.container}>
-        <Image source={imageSrc} />
+        <Image source={require('@moodtracker/assets/img/butterflies.png')} />
         <Pressable style={styles.button} onPress={handleHasSelected}>
           <Text style={styles.buttonText}>Choose another</Text>
         </Pressable>
