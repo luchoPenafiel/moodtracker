@@ -13,9 +13,12 @@ export const History = (): ReactElement => {
 
   return (
     <ScrollView>
-      {moodList.map((item: any) => {
-        return <MoodItemRow key={item.timestamp} item={item} />;
-      })}
+      {moodList
+        .slice()
+        .reverse()
+        .map((item: any) => {
+          return <MoodItemRow key={item.timestamp} item={item} />;
+        })}
     </ScrollView>
   );
 };
