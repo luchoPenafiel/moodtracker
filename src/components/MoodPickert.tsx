@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 20,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: theme.font.bold,
     textAlign: 'center',
     letterSpacing: 1,
   },
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   moodItemText: {
     color: theme.color.purple,
     fontSize: 10,
-    fontWeight: 'bold',
+    fontFamily: theme.font.bold,
     textAlign: 'center',
   },
   button: {
@@ -121,6 +121,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: theme.color.white,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: theme.font.bold,
   },
 });

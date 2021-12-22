@@ -8,6 +8,7 @@ import { Text } from 'react-native';
 import { HomeIcon } from './icons/Home';
 import { AnalyticsIcon } from './icons/Analitycs';
 import { HistoryIcon } from './icons/History';
+import { theme } from '@moodtracker/constants/theme';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -16,6 +17,9 @@ export const BottomTabsNavigator = (): ReactElement => {
     <BottomTabs.Navigator
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
+        headerTitleStyle: {
+          fontFamily: theme.font.bold,
+        },
         tabBarIcon: ({ color, size }) => {
           if (route.name === 'Home') {
             return <HomeIcon color={color} size={size} />;

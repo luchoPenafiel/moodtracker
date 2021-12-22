@@ -28,11 +28,11 @@ export const MoodItemRow = ({ item }: MoodItemRowProps): ReactElement => {
 const styles = StyleSheet.create({
   moodValue: {
     textAlign: 'center',
-    fontSize: 40,
     marginRight: 10,
   },
   moodDate: {
     textAlign: 'center',
+    fontFamily: theme.font.regular,
     color: theme.color.purple,
   },
   moodItem: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   moodDescription: {
     fontSize: 18,
     color: theme.color.purple,
-    fontWeight: 'bold',
+    fontFamily: theme.font.bold,
   },
   iconAndDescription: {
     flexDirection: 'row',
