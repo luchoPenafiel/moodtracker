@@ -79,18 +79,20 @@ const styles = StyleSheet.create({
     fontFamily: theme.font.bold,
     textAlign: 'center',
     letterSpacing: 1,
+    color: 'black',
   },
   moodBox: {
     margin: 10,
     paddingVertical: 20,
     borderRadius: 10,
-    backgroundColor: 'rgba(255,255,255,0.8)',
+    backgroundColor: 'rgba(255,255,255,1)',
   },
   moodList: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
+    color: 'black',
   },
   moodItem: {
     justifyContent: 'center',
